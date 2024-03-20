@@ -1,17 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
-import TextComponent from './components/TextComponent';
-import { Profile } from './screens/Profile';
-import Login from './screens/Login';
-import { Register } from './screens/Register';
-import { BrowserRouter,Route,Routes } from 'react-router-dom';
+import { useState } from "react";
+import "./App.css";
+// import TextComponent from './components/TextComponent';
+// import { Profile } from './screens/Profile';
+import Login from "./screens/Login";
+import { Register } from "./screens/Register";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import House from "./screens/House";
+
 
 function App() {
+  const [isLogin, setIsLogin] = useState(false);
   return (
-    <div >
-      
-        
-      
+    <div>
       {/* <TextComponent/>
       <Profile/>
       <Login/>
@@ -21,13 +21,12 @@ function App() {
       {/* route == /register <Register /> */}
 
       <BrowserRouter>
-          <Routes>
-            <Route path='/' element={<Login />}/>
-            <Route path='/register' element={<Register />}/>
-          </Routes>
+        <Routes>
+          <Route path="/" element={<Login setIsLogin={setIsLogin} />} />
+          <Route path="/register" element={<Register isLogin={isLogin} />} />
+          <Route path="/home" element={<House />} />
+        </Routes>
       </BrowserRouter>
-
-      
     </div>
   );
 }
